@@ -10,12 +10,12 @@ module ConnectionPool
     end
 
     struct Pool{T}
+        pool::CircularDeque{T}
+        lock::Threads.Condition
         connect::Function
         disconnect::Function
         max_size::Int
         idle_timeout::Int
-        pool::CircularDeque{T}
-        lock::Threads.Condition
     end
 
     function Pool(connect::Function, disconnect::Function, max_size::Int, idle_timeout::Int)
