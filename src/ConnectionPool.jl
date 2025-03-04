@@ -1,4 +1,4 @@
-module ConnectionPool
+module Connections
 
     using DataStructures: CircularDeque
 
